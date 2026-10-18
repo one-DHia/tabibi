@@ -12,6 +12,8 @@ const envSchema = z.object({
   LOCK_DURATION_MINUTES: z.coerce.number().default(15),
   RATE_LIMIT_IP_MAX: z.coerce.number().default(2),
   RATE_LIMIT_IP_WINDOW_HOURS: z.coerce.number().default(2),
+  RESEND_API_KEY: z.string().optional().default(''),
+  RESEND_FROM_EMAIL: z.string().default('Tabibi <onboarding@resend.dev>'),
 });
 
 export const ENV = envSchema.parse({
@@ -23,4 +25,6 @@ export const ENV = envSchema.parse({
   LOCK_DURATION_MINUTES: process.env.LOCK_DURATION_MINUTES,
   RATE_LIMIT_IP_MAX: process.env.RATE_LIMIT_IP_MAX,
   RATE_LIMIT_IP_WINDOW_HOURS: process.env.RATE_LIMIT_IP_WINDOW_HOURS,
+  RESEND_API_KEY: process.env.RESEND_API_KEY || '',
+  RESEND_FROM_EMAIL: process.env.RESEND_FROM_EMAIL || 'Tabibi <onboarding@resend.dev>',
 });

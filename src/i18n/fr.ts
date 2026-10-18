@@ -68,6 +68,7 @@ export const fr: TranslationSchema = {
     whatsapp_label: 'Numéro WhatsApp',
     whatsapp_notice: 'Obligatoire : votre confirmation sera envoyée par WhatsApp.',
     whatsapp_placeholder: '05 XX XX XX XX',
+    email_label: 'Adresse e-mail (pour confirmation par mail)',
     submit_button: 'Confirmer le rendez-vous',
     locking_slot: 'Verrouillage du créneau...',
     success_title: 'Rendez-vous Confirmé',

@@ -13,6 +13,7 @@ export interface Appointment {
   cabinetId: string;
   patientName: string;
   patientWhatsapp: string;
+  patientEmail?: string;
   appointmentDate: string; // YYYY-MM-DD
   appointmentTime: string; // HH:mm
   status: AppointmentStatus;
@@ -38,5 +39,6 @@ export interface CreateBookingInput {
   time: string;
   patientName: string;
   patientWhatsapp: string;
+  patientEmail?: string;
   deviceId: string;
 }

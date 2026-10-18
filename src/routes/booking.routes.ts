@@ -64,14 +64,14 @@ bookingRouter.post('/api/cabinet/:slug/book', async (req: Request, res: Response
     return;
   }
 
-  const { date, time, patientName, patientWhatsapp, deviceId } = req.body;
+  const { date, time, patientName, patientWhatsapp, patientEmail, deviceId } = req.body;
   if (!date || !time || !patientName || !patientWhatsapp || !deviceId) {
     res.status(400).json({ success: false, error: 'Champs obligatoires manquants' });
     return;
   }
 
   const result = await createAppointment(
-    { cabinetSlug: slug, date, time, patientName, patientWhatsapp, deviceId },
+    { cabinetSlug: slug, date, time, patientName, patientWhatsapp, patientEmail, deviceId },
     ip,
     { name: defaultCabinet.name, address: defaultCabinet.address, phone: defaultCabinet.phone }
   );

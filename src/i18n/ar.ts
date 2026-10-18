@@ -68,6 +68,7 @@ export const ar: TranslationSchema = {
     whatsapp_label: 'رقم الواتساب',
     whatsapp_notice: 'إلزامي: سيتم إرسال تأكيد موعدك عبر تطبيق واتساب.',
     whatsapp_placeholder: '05 XX XX XX XX',
+    email_label: 'البريد الإلكتروني (لتأكيد الموعد)',
     submit_button: 'تأكيد الموعد',
     locking_slot: 'جار تأكيد حجز التوقيت...',
     success_title: 'تم تأكيد الموعد بنجاح',

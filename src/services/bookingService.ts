@@ -3,6 +3,7 @@ import { Appointment, CreateBookingInput, LockSlotInput } from '../types/booking
 import { calculateReminderTimes } from '../utils/date.js';
 import { calculateLockExpiration } from './slotEngine.js';
 import { buildTrilingualConfirmation, sendWhatsAppMessage } from './openwaService.js';
+import { sendConfirmationEmail } from './emailService.js';
 import { checkDeviceRateLimit, recordBookingAttempt } from '../config/rateLimit.js';
 
 // In-memory state for high-speed conflict prevention & dev fallback
@@ -52,6 +53,7 @@ export async function createAppointment(
     cabinetId: input.cabinetSlug,
     patientName: input.patientName,
     patientWhatsapp: input.patientWhatsapp,
+    patientEmail: input.patientEmail,
     appointmentDate: input.date,
     appointmentTime: input.time,
     status: 'confirmed',
@@ -81,6 +83,21 @@ export async function createAppointment(
   });
 
   await sendWhatsAppMessage(input.patientWhatsapp, message);
+
+  // Send Email confirmation if patient email provided
+  if (input.patientEmail) {
+    await sendConfirmationEmail({
+      toEmail: input.patientEmail,
+      patientName: input.patientName,
+      cabinetName: cabinetInfo.name,
+      cabinetAddress: cabinetInfo.address,
+      cabinetPhone: cabinetInfo.phone,
+      appointmentDate: input.date,
+      appointmentTime: input.time,
+      secureToken,
+    });
+  }
+
   return { success: true, appointment };
 }
 
