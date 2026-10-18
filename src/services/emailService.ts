@@ -1,10 +1,6 @@
+import nodemailer from 'nodemailer';
 import { Resend } from 'resend';
 import { ENV } from '../config/env.js';
-
-function getResendClient(): Resend | null {
-  const key = process.env.RESEND_API_KEY || ENV.RESEND_API_KEY;
-  return key ? new Resend(key) : null;
-}
 
 export interface ConfirmationEmailInput {
   toEmail: string;
@@ -61,34 +57,52 @@ export async function sendConfirmationEmail(
     return { success: false, error: 'invalid_email' };
   }
 
-  const client = getResendClient();
+  const smtpUser = process.env.SMTP_USER || ENV.SMTP_USER;
+  const smtpPass = process.env.SMTP_PASS || ENV.SMTP_PASS;
 
-  if (!client) {
-    console.log(`[Email Mock] RESEND_API_KEY absent. Email de confirmation simulé pour ${input.toEmail}:`, {
-      patient: input.patientName,
-      cabinet: input.cabinetName,
-      date: input.appointmentDate,
-      time: input.appointmentTime,
-    });
-    return { success: true, id: 'mock-email-id' };
-  }
+  // 1. Priorité à Gmail SMTP (sans nom de domaine requis)
+  if (smtpUser && smtpPass) {
+    try {
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: { user: smtpUser, pass: smtpPass },
+      });
 
-  try {
-    const { data, error } = await client.emails.send({
-      from: process.env.RESEND_FROM_EMAIL || ENV.RESEND_FROM_EMAIL,
-      to: [input.toEmail],
-      subject: `Confirmation de rendez-vous — ${input.cabinetName}`,
-      html: buildConfirmationHtml(input),
-    });
+      const info = await transporter.sendMail({
+        from: process.env.SMTP_FROM || ENV.SMTP_FROM || `Tabibi <${smtpUser}>`,
+        to: input.toEmail,
+        subject: `Confirmation de rendez-vous — ${input.cabinetName}`,
+        html: buildConfirmationHtml(input),
+      });
 
-    if (error) {
-      console.error('[Resend Error]', error);
-      return { success: false, error: error.message };
+      console.log(`[Gmail SMTP Success] E-mail envoyé à ${input.toEmail} (ID: ${info.messageId})`);
+      return { success: true, id: info.messageId };
+    } catch (err: any) {
+      console.error('[Gmail SMTP Error]', err);
+      return { success: false, error: err?.message || 'smtp_failed' };
     }
-
-    return { success: true, id: data?.id };
-  } catch (err: any) {
-    console.error('[Resend Exception]', err);
-    return { success: false, error: err?.message || 'resend_failed' };
   }
+
+  // 2. Fallback Resend
+  const resendKey = process.env.RESEND_API_KEY || ENV.RESEND_API_KEY;
+  if (resendKey) {
+    try {
+      const client = new Resend(resendKey);
+      const { data, error } = await client.emails.send({
+        from: process.env.RESEND_FROM_EMAIL || ENV.RESEND_FROM_EMAIL,
+        to: [input.toEmail],
+        subject: `Confirmation de rendez-vous — ${input.cabinetName}`,
+        html: buildConfirmationHtml(input),
+      });
+
+      if (error) return { success: false, error: error.message };
+      return { success: true, id: data?.id };
+    } catch (err: any) {
+      return { success: false, error: err?.message || 'resend_failed' };
+    }
+  }
+
+  // 3. Fallback Dev / Simulation
+  console.log(`[Email Mock] Aucun SMTP ni Resend configuré. E-mail simulé pour ${input.toEmail}`);
+  return { success: true, id: 'mock-email-id' };
 }
