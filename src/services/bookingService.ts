@@ -86,7 +86,7 @@ export async function createAppointment(
 
   // Send Email confirmation if patient email provided
   if (input.patientEmail) {
-    await sendConfirmationEmail({
+    const emailResult = await sendConfirmationEmail({
       toEmail: input.patientEmail,
       patientName: input.patientName,
       cabinetName: cabinetInfo.name,
@@ -96,6 +96,7 @@ export async function createAppointment(
       appointmentTime: input.time,
       secureToken,
     });
+    console.log(`[Resend Email Status for ${input.patientEmail}]:`, emailResult);
   }
 
   return { success: true, appointment };

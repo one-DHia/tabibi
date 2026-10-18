@@ -1,7 +1,10 @@
 import { Resend } from 'resend';
 import { ENV } from '../config/env.js';
 
-const resendClient = ENV.RESEND_API_KEY ? new Resend(ENV.RESEND_API_KEY) : null;
+function getResendClient(): Resend | null {
+  const key = process.env.RESEND_API_KEY || ENV.RESEND_API_KEY;
+  return key ? new Resend(key) : null;
+}
 
 export interface ConfirmationEmailInput {
   toEmail: string;
@@ -58,7 +61,9 @@ export async function sendConfirmationEmail(
     return { success: false, error: 'invalid_email' };
   }
 
-  if (!resendClient) {
+  const client = getResendClient();
+
+  if (!client) {
     console.log(`[Email Mock] RESEND_API_KEY absent. Email de confirmation simulé pour ${input.toEmail}:`, {
       patient: input.patientName,
       cabinet: input.cabinetName,
@@ -69,8 +74,8 @@ export async function sendConfirmationEmail(
   }
 
   try {
-    const { data, error } = await resendClient.emails.send({
-      from: ENV.RESEND_FROM_EMAIL,
+    const { data, error } = await client.emails.send({
+      from: process.env.RESEND_FROM_EMAIL || ENV.RESEND_FROM_EMAIL,
       to: [input.toEmail],
       subject: `Confirmation de rendez-vous — ${input.cabinetName}`,
       html: buildConfirmationHtml(input),
