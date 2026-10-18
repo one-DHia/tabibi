@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitation à rejoindre Tabibi | طبيبي</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1e293b;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color: #f1f5f9; padding: 30px 15px;">
+    <tr>
+      <td align="center">
+        <!-- Main Card -->
+        <table role="presentation" width="100%" style="max-width: 600px; background: #ffffff; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;">
+          
+          <!-- Header Banner -->
+          <tr>
+            <td style="background: linear-gradient(135deg, #059669 0%, #0d9488 50%, #0284c7 100%); padding: 35px 30px; text-align: center;">
+              <div style="display: inline-block; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(8px); padding: 8px 16px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.3); margin-bottom: 12px;">
+                <span style="color: #ffffff; font-size: 13px; font-weight: 700; letter-spacing: 0.5px;">INVITATION CABINET • دعوة انضمام</span>
+              </div>
+              <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 800; letter-spacing: -0.5px;">
+                Tabibi <span style="font-weight: 400; opacity: 0.9;">| طبيبي</span>
+              </h1>
+              <p style="color: rgba(255,255,255,0.9); margin: 6px 0 0 0; font-size: 14px;">
+                Rejoignez une équipe médicale moderne
+              </p>
+            </td>
+          </tr>
+
+          <!-- Content Body -->
+          <tr>
+            <td style="padding: 35px 30px;">
+
+              <!-- 1. FRANÇAIS -->
+              <div style="border-left: 4px solid #059669; padding-left: 16px; margin-bottom: 28px;">
+                <h2 style="margin: 0 0 8px 0; font-size: 18px; color: #0f172a; font-weight: 700;">
+                  Vous avez été invité(e) !
+                </h2>
+                <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #475569;">
+                  Un cabinet médical vous a invité(e) à collaborer sur la plateforme <strong>Tabibi</strong>. Cliquez ci-dessous pour accepter l'invitation et finaliser la création de votre profil.
+                </p>
+              </div>
+
+              <!-- 2. ARABIC (العربية) -->
+              <div dir="rtl" style="text-align: right; border-right: 4px solid #0d9488; padding-right: 16px; margin-bottom: 28px; font-family: 'Segoe UI', Tahoma, Arial, sans-serif;">
+                <h2 style="margin: 0 0 8px 0; font-size: 18px; color: #0f172a; font-weight: 700;">
+                  دعوة للانضمام إلى العيادة
+                </h2>
+                <p style="margin: 0; font-size: 14px; line-height: 1.8; color: #475569;">
+                  تمت دعوتك للانضمام إلى فريق عمل طبي على منصة <strong>طبيبي</strong>. اضغط على الزر أدناه لقبول الدعوة وتفعيل حسابك المهني.
+                </p>
+              </div>
+
+              <!-- 3. ENGLISH -->
+              <div style="border-left: 4px solid #0284c7; padding-left: 16px; margin-bottom: 32px;">
+                <h2 style="margin: 0 0 8px 0; font-size: 16px; color: #0f172a; font-weight: 700;">
+                  You've Been Invited!
+                </h2>
+                <p style="margin: 0; font-size: 13px; line-height: 1.6; color: #475569;">
+                  You have been invited to join a medical practice on <strong>Tabibi</strong>. Click below to accept the invitation and set up your access.
+                </p>
+              </div>
+
+              <!-- Call to Action Button -->
+              <div style="text-align: center; margin: 35px 0 25px 0;">
+                <a href="{{ .ConfirmationURL }}" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #059669 0%, #0d9488 100%); color: #ffffff; text-decoration: none; font-size: 15px; font-weight: 700; padding: 15px 35px; border-radius: 12px; box-shadow: 0 6px 18px rgba(5, 150, 105, 0.35); letter-spacing: 0.3px;">
+                  Accepter l'invitation &nbsp;•&nbsp; قبول الدعوة
+                </a>
+              </div>
+
+              <!-- Fallback Link -->
+              <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px; margin-top: 25px;">
+                <p style="margin: 0 0 6px 0; font-size: 12px; color: #64748b; font-weight: 600;">
+                  Lien direct d'acceptation :
+                </p>
+                <p style="margin: 0; font-size: 11px; word-break: break-all; color: #0284c7;">
+                  <a href="{{ .ConfirmationURL }}" style="color: #0284c7; text-decoration: none;">{{ .ConfirmationURL }}</a>
+                </p>
+              </div>
+
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background-color: #f8fafc; border-top: 1px solid #e2e8f0; padding: 22px 30px; text-align: center;">
+              <p style="margin: 0 0 6px 0; font-size: 12px; font-weight: 600; color: #64748b;">
+                Tabibi DZ • منصة طبيبي للخدمات الصحية بالجزائر
+              </p>
+              <p style="margin: 0; font-size: 11px; color: #94a3b8; line-height: 1.5;">
+                Conforme à la législation algérienne (Loi 18-07 relative à la protection des données).
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
