@@ -4,6 +4,7 @@ import path from 'path';
 import { ENV } from './config/env.js';
 import { bookingRouter } from './routes/booking.routes.js';
 import { cabinetRouter } from './routes/cabinet.routes.js';
+import { authRouter } from './routes/auth.routes.js';
 import { startReminderScheduler } from './services/reminderScheduler.js';
 
 const app = express();
@@ -22,6 +23,7 @@ app.use('/types', express.static(path.join(process.cwd(), 'src', 'types')));
 // API routes
 app.use(bookingRouter);
 app.use(cabinetRouter);
+app.use(authRouter);
 
 const clientDir = path.join(process.cwd(), 'src', 'client');
 

@@ -61,20 +61,101 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Handle Signup
-  document.getElementById('signupForm')?.addEventListener('submit', (e) => {
+  document.getElementById('signupForm')?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const signupForm = document.getElementById('signupForm') as HTMLElement;
-    const verifyBox = document.getElementById('verifyEmailBox') as HTMLElement;
+    const btn = (e.target as HTMLElement).querySelector('button[type="submit"]') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.innerText = dictionaries[currentLang].common.loading;
 
-    signupForm.style.display = 'none';
-    verifyBox.style.display = 'block';
+    const email = (document.getElementById('signupEmail') as HTMLInputElement).value;
+    const password = (document.getElementById('signupPassword') as HTMLInputElement).value;
+    const doctorName = (document.getElementById('signupDoctorName') as HTMLInputElement).value;
+    const specialty = (document.getElementById('signupSpecialty') as HTMLInputElement).value;
+    const phone = (document.getElementById('signupPhone') as HTMLInputElement).value;
+    const address = (document.getElementById('signupAddress') as HTMLInputElement).value;
+    const slug = (document.getElementById('signupSlug') as HTMLInputElement).value;
+
+    try {
+      const res = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password, doctorName, specialty, phone, address, slug }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        const signupForm = document.getElementById('signupForm') as HTMLElement;
+        const verifyBox = document.getElementById('verifyEmailBox') as HTMLElement;
+        signupForm.style.display = 'none';
+        verifyBox.style.display = 'block';
+      } else {
+        alert(data.error || 'Erreur lors de l’inscription');
+        btn.disabled = false;
+        btn.innerText = dictionaries[currentLang].auth.signup_btn;
+      }
+    } catch {
+      alert(dictionaries[currentLang].common.error_generic);
+      btn.disabled = false;
+      btn.innerText = dictionaries[currentLang].auth.signup_btn;
+    }
   });
 
   // Handle Login
-  document.getElementById('loginForm')?.addEventListener('submit', (e) => {
+  document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    // Redirect to dashboard on successful login
-    window.location.href = '/dashboard';
+    const btn = (e.target as HTMLElement).querySelector('button[type="submit"]') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.innerText = dictionaries[currentLang].common.loading;
+
+    const email = (document.getElementById('loginEmail') as HTMLInputElement).value;
+    const password = (document.getElementById('loginPassword') as HTMLInputElement).value;
+
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        window.location.href = '/dashboard';
+      } else {
+        alert(data.error || 'Identifiants invalides');
+        btn.disabled = false;
+        btn.innerText = dictionaries[currentLang].auth.login_btn;
+      }
+    } catch {
+      alert(dictionaries[currentLang].common.error_generic);
+      btn.disabled = false;
+      btn.innerText = dictionaries[currentLang].auth.login_btn;
+    }
+  });
+
+  // Handle Reset Password
+  document.getElementById('resetPasswordForm')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = (e.target as HTMLElement).querySelector('button[type="submit"]') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.innerText = dictionaries[currentLang].common.loading;
+    const email = (document.getElementById('resetEmail') as HTMLInputElement).value;
+    try {
+      const res = await fetch('/api/auth/reset-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        alert('Lien de réinitialisation envoyé à votre e-mail !');
+        showTab('login');
+      } else {
+        alert(data.error || 'Erreur');
+      }
+    } catch {
+      alert(dictionaries[currentLang].common.error_generic);
+    } finally {
+      btn.disabled = false;
+      btn.innerText = dictionaries[currentLang].auth.reset_password_btn;
+    }
   });
 
   document.querySelectorAll('.lang-btn').forEach((btn) => {
