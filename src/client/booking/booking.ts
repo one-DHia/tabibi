@@ -112,7 +112,6 @@ async function submitBooking(): Promise<void> {
   const date = (document.getElementById('appointmentDate') as HTMLInputElement).value;
   const patientName = (document.getElementById('patientName') as HTMLInputElement).value.trim();
   const patientWhatsapp = (document.getElementById('patientWhatsapp') as HTMLInputElement).value.trim();
-  const patientEmail = (document.getElementById('patientEmail') as HTMLInputElement)?.value?.trim() || undefined;
 
   if (!patientName || !patientWhatsapp || !selectedTime) return;
 
@@ -123,7 +122,7 @@ async function submitBooking(): Promise<void> {
   const res = await fetch(`/api/cabinet/${currentSlug}/book`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ date, time: selectedTime, patientName, patientWhatsapp, patientEmail, deviceId }),
+    body: JSON.stringify({ date, time: selectedTime, patientName, patientWhatsapp, deviceId }),
   });
 
   const result = await res.json();
@@ -136,8 +135,7 @@ async function submitBooking(): Promise<void> {
     details.innerHTML = `
       <strong>${patientName}</strong><br>
       📅 ${result.appointment.appointmentDate} à ${result.appointment.appointmentTime}<br>
-      💬 WhatsApp: ${patientWhatsapp}<br>
-      ${patientEmail ? `📧 E-mail: ${patientEmail}<br>` : ''}
+      💬 WhatsApp: ${patientWhatsapp}
     `;
   } else {
     alert(dictionaries[currentLang].errors[result.error as keyof typeof dictionaries.fr.errors] || 'Erreur');

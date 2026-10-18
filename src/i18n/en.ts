@@ -68,7 +68,6 @@ export const en: TranslationSchema = {
     whatsapp_label: 'WhatsApp Number',
     whatsapp_notice: 'Required: your confirmation will be sent via WhatsApp.',
     whatsapp_placeholder: '05 XX XX XX XX',
-    email_label: 'Email address (for confirmation by email)',
     submit_button: 'Confirm Appointment',
     locking_slot: 'Securing slot...',
     success_title: 'Appointment Confirmed',

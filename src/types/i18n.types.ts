@@ -68,7 +68,6 @@ export interface TranslationSchema {
     whatsapp_label: string;
     whatsapp_notice: string;
     whatsapp_placeholder: string;
-    email_label: string;
     submit_button: string;
     locking_slot: string;
     success_title: string;
