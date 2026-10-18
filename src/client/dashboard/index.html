@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabibi — Tableau de Bord Cabinet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/dashboard/style.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    
+    <!-- Top Header -->
+    <header class="dashboard-header">
+      <div class="header-left">
+        <a href="/" class="brand-badge">
+          <span class="brand-sparkle">✦</span>
+          <span class="brand-name">Tabibi</span>
+        </a>
+        <div class="cabinet-status">
+          <span class="status-dot"></span>
+          <span id="activeCabinetName" style="font-weight: 700;">Cabinet El-Chifa</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="lang-selector">
+          <button class="lang-btn active" data-lang="fr">FR</button>
+          <button class="lang-btn" data-lang="ar">عربي</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <a href="/" class="logout-link">Déconnexion</a>
+      </div>
+    </header>
+
+    <!-- Page Title & Metrics -->
+    <div class="page-intro">
+      <div>
+        <h1 class="dashboard-title" data-i18n="dashboard.title">Tableau de Bord du Cabinet</h1>
+        <p class="dashboard-sub">Supervisez vos consultations en temps réel et vos rappels WhatsApp.</p>
+      </div>
+      <div class="quick-stats">
+        <div class="stat-pill">
+          <span class="stat-label">Consultations :</span>
+          <span class="stat-val">3</span>
+        </div>
+        <div class="stat-pill online">
+          <span class="stat-label">WhatsApp :</span>
+          <span class="stat-val">Connecté</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="tab-btn active" id="tabBtnAgenda" data-i18n="dashboard.tab_agenda">Agenda des Consultations</button>
+      <button class="tab-btn" id="tabBtnSchedules" data-i18n="dashboard.tab_schedules">Horaires & Absences</button>
+      <button class="tab-btn" id="tabBtnSettings" data-i18n="dashboard.tab_settings">Mon Cabinet & QR Code</button>
+    </nav>
+
+    <!-- TAB 1: Agenda des Consultations -->
+    <main id="tabAgenda" class="card">
+      <div class="agenda-toolbar">
+        <div class="toolbar-title-group">
+          <h2 data-i18n="dashboard.tab_agenda">Consultations du Jour</h2>
+          <span class="badge-count">3 rendez-vous</span>
+        </div>
+        <input type="date" id="agendaDatePicker" class="date-picker-input" />
+      </div>
+
+      <div class="table-wrapper">
+        <table class="appointment-table">
+          <thead>
+            <tr>
+              <th data-i18n="booking.time_label">Heure</th>
+              <th data-i18n="booking.name_label">Patient</th>
+              <th data-i18n="booking.whatsapp_label">WhatsApp</th>
+              <th>Statut</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="appointmentsList">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+      <div id="noAppointmentsMsg" class="empty-state" data-i18n="dashboard.no_appointments">
+        Aucun rendez-vous prévu pour cette journée.
+      </div>
+    </main>
+
+    <!-- TAB 2: Horaires & Absences -->
+    <section id="tabSchedules" class="card" style="display: none;">
+      <h2 class="card-section-title" data-i18n="dashboard.tab_schedules">Horaires & Absences</h2>
+      <p class="section-desc">Définissez vos heures d'ouverture quotidiennes pour la génération automatique des créneaux.</p>
+      <div class="schedules-grid">
+        <div class="input-card">
+          <label class="form-label">Heure d'ouverture du cabinet</label>
+          <input type="time" id="openTimeInput" value="08:30" class="form-input" />
+        </div>
+        <div class="input-card">
+          <label class="form-label">Heure de fermeture du cabinet</label>
+          <input type="time" id="closeTimeInput" value="16:30" class="form-input" />
+        </div>
+      </div>
+      <button class="btn-primary" id="btnSaveSchedules" data-i18n="dashboard.save_schedules_btn">Enregistrer les horaires</button>
+    </section>
+
+    <!-- TAB 3: Mon Cabinet & QR Code -->
+    <section id="tabSettings" class="card" style="display: none;">
+      <h2 class="card-section-title" data-i18n="dashboard.tab_settings">Mon Cabinet & QR Code</h2>
+      <p class="section-desc">Partagez ce lien unique sur votre fiche Google Maps, ordonnances et réseaux sociaux :</p>
+      
+      <div class="share-box">
+        <input type="text" id="cabinetShareUrl" readonly class="share-input" />
+        <button class="btn-primary" id="btnCopyLink" data-i18n="dashboard.copy_link_btn">Copier le lien</button>
+      </div>
+
+      <div class="qr-preview-card">
+        <div class="qr-box">📱</div>
+        <div class="qr-info">
+          <h3>QR Code du Cabinet</h3>
+          <p>Imprimez ce QR Code pour l'afficher sur votre porte d'entrée ou salle d'attente.</p>
+          <button class="btn-outline" onclick="window.print()" data-i18n="dashboard.print_qr_btn">Imprimer le QR Code</button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script type="module" src="/dashboard/dashboard.js"></script>
+</body>
+</html>

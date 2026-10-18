@@ -1,0 +1,319 @@
+/* ============================================================
+   TABIBI — LUXURY BESPOKE BOOKING INTERFACE (Patient Experience)
+   ============================================================ */
+
+:root {
+  --bg-primary: #FAFCFF;
+  --bg-mesh-1: radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.08) 0px, transparent 50%);
+  --bg-mesh-2: radial-gradient(at 100% 100%, rgba(14, 165, 233, 0.08) 0px, transparent 50%);
+  
+  --surface-glass: rgba(255, 255, 255, 0.9);
+  --surface-card: #FFFFFF;
+  
+  --border-glass: rgba(226, 232, 240, 0.85);
+  --border-focus: #10B981;
+  --border-glow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+  
+  --brand-gradient: linear-gradient(135deg, #059669 0%, #0D9488 50%, #0284C7 100%);
+  --brand-glow: 0 10px 25px -5px rgba(16, 185, 129, 0.35);
+  
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  
+  --whatsapp-green: #25D366;
+  --whatsapp-bg: #ECFDF5;
+  --whatsapp-border: #A7F3D0;
+  
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 9999px;
+  
+  --shadow-card: 0 20px 40px -15px rgba(15, 23, 42, 0.08), 0 0 1px 1px rgba(226, 232, 240, 0.7);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--bg-primary);
+  background-image: var(--bg-mesh-1), var(--bg-mesh-2);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  line-height: 1.6;
+  padding: 32px 16px 60px;
+  min-height: 100vh;
+}
+
+.clinical-container {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* Lang switcher */
+.lang-selector {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.lang-btn {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--border-glass);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lang-btn.active {
+  background: #FFFFFF;
+  color: var(--text-primary);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Header Cabinet */
+.cabinet-header {
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: var(--shadow-card);
+}
+
+.cabinet-avatar {
+  width: 68px;
+  height: 68px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(14, 165, 233, 0.15) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  flex-shrink: 0;
+}
+
+.cabinet-info h1 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+  margin-bottom: 4px;
+}
+
+.cabinet-specialty {
+  font-size: 14px;
+  font-weight: 700;
+  color: #059669;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cabinet-meta {
+  font-size: 13px;
+  color: var(--text-secondary);
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Card Section */
+.clinical-card {
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-card);
+  margin-bottom: 24px;
+}
+
+.section-title {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* Slots Grid */
+.slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.slot-item {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-sm);
+  padding: 12px 8px;
+  font-size: 15px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.slot-item:hover:not(.disabled) {
+  border-color: #10B981;
+  background: rgba(16, 185, 129, 0.06);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+}
+
+.slot-item.selected {
+  background: var(--brand-gradient) !important;
+  color: #FFFFFF !important;
+  border-color: transparent !important;
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.35) !important;
+  transform: scale(1.03);
+}
+
+.slot-item.disabled {
+  background: #F8FAFC;
+  color: #CBD5E1;
+  cursor: not-allowed;
+  border-color: #F1F5F9;
+}
+
+/* Lock Banner */
+.lock-banner {
+  background: #FFFBEB;
+  border: 1px solid #FDE68A;
+  color: #92400E;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Inputs */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 15px;
+  border: 1px solid #CBD5E1;
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  outline: none;
+  background: #FFFFFF;
+  transition: all 0.2s ease;
+}
+
+.form-input:focus {
+  border-color: var(--border-focus);
+  box-shadow: var(--border-glow);
+}
+
+.whatsapp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #065F46;
+  background: var(--whatsapp-bg);
+  border: 1px solid var(--whatsapp-border);
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+/* Primary Button */
+.btn-primary {
+  width: 100%;
+  background: var(--brand-gradient);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 15px 24px;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+  cursor: pointer;
+  box-shadow: var(--brand-glow);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: 12px;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.45);
+}
+
+.btn-primary:disabled {
+  background: #E2E8F0;
+  color: #94A3B8;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Confirmed Card */
+#successCard {
+  text-align: center;
+}
+
+.success-check-circle {
+  width: 72px;
+  height: 72px;
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  margin: 0 auto 16px;
+  border: 2px solid rgba(16, 185, 129, 0.25);
+}
+
+[dir="rtl"] {
+  text-align: right;
+}

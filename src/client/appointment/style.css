@@ -1,0 +1,318 @@
+/* ============================================================
+   TABIBI — LUXURY DIGITAL APPOINTMENT PASS
+   ============================================================ */
+
+:root {
+  --bg-primary: #FAFCFF;
+  --bg-mesh-1: radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.08) 0px, transparent 50%);
+  --bg-mesh-2: radial-gradient(at 100% 100%, rgba(14, 165, 233, 0.08) 0px, transparent 50%);
+  --surface-glass: rgba(255, 255, 255, 0.94);
+  --border-glass: rgba(226, 232, 240, 0.85);
+  --brand-gradient: linear-gradient(135deg, #059669 0%, #0D9488 50%, #0284C7 100%);
+  --brand-glow: 0 10px 25px -5px rgba(16, 185, 129, 0.35);
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+  --shadow-card: 0 25px 50px -12px rgba(15, 23, 42, 0.08), 0 0 1px 1px rgba(226, 232, 240, 0.7);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--bg-primary);
+  background-image: var(--bg-mesh-1), var(--bg-mesh-2);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+}
+
+.pass-wrapper {
+  width: 100%;
+  max-width: 520px;
+}
+
+.pass-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 800;
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-sparkle {
+  color: #10B981;
+  -webkit-text-fill-color: #10B981;
+}
+
+.lang-selector {
+  display: flex;
+  gap: 4px;
+  background: rgba(241, 245, 249, 0.8);
+  padding: 3px;
+  border-radius: var(--radius-pill);
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.lang-btn.active {
+  background: #FFFFFF;
+  color: var(--text-primary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.appointment-card {
+  background: var(--surface-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.card-hero {
+  padding: 28px 28px 20px;
+  background: linear-gradient(180deg, rgba(16, 185, 129, 0.05) 0%, transparent 100%);
+  border-bottom: 1px dashed var(--border-glass);
+}
+
+.verified-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(16, 185, 129, 0.1);
+  color: #047857;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 16px;
+}
+
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  background: #10B981;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #10B981;
+}
+
+.doctor-badge {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar-box {
+  width: 56px;
+  height: 56px;
+  background: #FFFFFF;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+.cabinet-title {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+}
+
+.specialty-sub {
+  font-size: 13px;
+  color: #059669;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.pass-body {
+  padding: 28px;
+}
+
+.schedule-highlight {
+  display: flex;
+  background: #FFFFFF;
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+}
+
+.highlight-item {
+  flex: 1;
+}
+
+.highlight-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.highlight-val {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.highlight-val.time {
+  color: #059669;
+}
+
+.divider {
+  width: 1px;
+  background: var(--border-glass);
+  margin: 0 16px;
+}
+
+.info-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  padding: 0 4px;
+}
+
+.info-icon {
+  font-size: 20px;
+}
+
+.info-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.info-detail {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 2px;
+}
+
+/* Call Banner */
+.call-banner {
+  background: rgba(2, 132, 199, 0.06);
+  border: 1px solid rgba(2, 132, 199, 0.2);
+  padding: 16px;
+  border-radius: var(--radius-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.call-text {
+  font-size: 13px;
+  color: #0369A1;
+  line-height: 1.4;
+}
+
+.phone-number {
+  font-weight: 800;
+  font-size: 15px;
+  margin-top: 4px;
+  color: #0284C7;
+}
+
+.btn-call {
+  background: #0284C7;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+}
+
+.pass-footer {
+  background: rgba(248, 250, 252, 0.8);
+  border-top: 1px solid var(--border-glass);
+  padding: 14px 28px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.expired-card {
+  padding: 48px 32px;
+  text-align: center;
+  display: none;
+}
+
+.expired-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.expired-card h2 {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.expired-card p {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.btn-primary {
+  background: var(--brand-gradient);
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: var(--brand-glow);
+}
+
+[dir="rtl"] {
+  text-align: right;
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabibi — Espace Praticien</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/auth/style.css">
+</head>
+<body>
+  <div class="auth-wrapper">
+    <div class="auth-card">
+      
+      <!-- Top Bar: Logo & Lang -->
+      <div class="card-topbar">
+        <a href="/" class="brand-badge">
+          <span class="brand-sparkle">✦</span>
+          <span class="brand-name">Tabibi</span>
+        </a>
+        <div class="lang-selector">
+          <button class="lang-btn active" data-lang="fr">FR</button>
+          <button class="lang-btn" data-lang="ar">عربي</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+      </div>
+
+      <!-- Header Title -->
+      <div class="auth-header">
+        <div class="auth-icon-wrap">
+          <div class="auth-icon">👨‍⚕️</div>
+        </div>
+        <h1 id="authTitle" data-i18n="auth.login_title">Connexion Espace Praticien</h1>
+        <p class="auth-sub" data-i18n="auth.login_desc">Gérez vos rendez-vous et vos créneaux en toute simplicité.</p>
+      </div>
+
+      <!-- Segmented Pill Tabs -->
+      <div class="auth-tabs" id="authTabs">
+        <button class="auth-tab active" id="tabLogin" data-i18n="auth.login_btn">Se connecter</button>
+        <button class="auth-tab" id="tabSignup" data-i18n="auth.signup_btn">Inscrire mon cabinet</button>
+      </div>
+
+      <!-- 1. Login Form -->
+      <form id="loginForm">
+        <div class="form-group">
+          <label class="form-label" data-i18n="auth.email_label">Adresse e-mail</label>
+          <input type="email" id="loginEmail" class="form-input" placeholder="dr.nom@exemple.dz" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="auth.password_label">Mot de passe</label>
+          <input type="password" id="loginPassword" class="form-input" placeholder="••••••••" required />
+        </div>
+        <button type="submit" class="btn-primary" data-i18n="auth.login_btn">Se connecter</button>
+        <div class="auth-footer">
+          <a href="#" id="linkForgotPassword" data-i18n="auth.forgot_password_link">Mot de passe oublié ?</a>
+        </div>
+      </form>
+
+      <!-- 2. Signup Form -->
+      <form id="signupForm" style="display: none;">
+        <div class="form-group">
+          <label class="form-label" data-i18n="auth.doctor_name_label">Nom du praticien</label>
+          <input type="text" id="signupDoctorName" class="form-input" placeholder="ex: Dr. Amine Benali" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="auth.specialty_label">Spécialité médicale</label>
+          <input type="text" id="signupSpecialty" class="form-input" placeholder="ex: Cardiologue, Pédiatre..." required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="auth.cabinet_phone_label">Téléphone direct du cabinet</label>
+          <input type="tel" id="signupPhone" class="form-input" placeholder="05 XX XX XX XX" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="auth.cabinet_address_label">Adresse complète</label>
+          <input type="text" id="signupAddress" class="form-input" placeholder="ex: 12 Rue Didouche Mourad, Alger" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="auth.cabinet_slug_label">Identifiant URL (ex: dr-benali)</label>
+          <input type="text" id="signupSlug" class="form-input" placeholder="cabinet-dr-benali" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="auth.email_label">Adresse e-mail</label>
+          <input type="email" id="signupEmail" class="form-input" placeholder="contact@cabinet.dz" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="auth.password_label">Mot de passe</label>
+          <input type="password" id="signupPassword" class="form-input" placeholder="Minimum 8 caractères" required />
+        </div>
+        <button type="submit" class="btn-primary" data-i18n="auth.signup_btn">Créer mon cabinet</button>
+      </form>
+
+      <!-- 3. Verify Email Alert Box -->
+      <div id="verifyEmailBox" class="alert-box">
+        <div class="alert-icon">✉️</div>
+        <h3 data-i18n="auth.verify_email_title">Vérifiez votre boîte e-mail</h3>
+        <p data-i18n="auth.verify_email_desc">Un e-mail de confirmation vous a été envoyé. Veuillez cliquer sur le lien pour activer votre cabinet.</p>
+      </div>
+
+      <!-- 4. Reset Password Form -->
+      <form id="resetPasswordForm" style="display: none;">
+        <div class="form-group">
+          <label class="form-label" data-i18n="auth.email_label">Adresse e-mail</label>
+          <input type="email" id="resetEmail" class="form-input" placeholder="dr.nom@exemple.dz" required />
+        </div>
+        <button type="submit" class="btn-primary" data-i18n="auth.reset_password_btn">Envoyer le lien</button>
+        <div class="auth-footer">
+          <a href="#" id="linkBackToLogin" data-i18n="auth.back_to_login">Retour à la connexion</a>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <script type="module" src="/auth/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabibi — Cadre Légal & Déontologique</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/legal/style.css">
+</head>
+<body>
+  <div class="legal-container">
+    
+    <header class="legal-header">
+      <a href="/" class="brand-badge">
+        <span class="brand-sparkle">✦</span>
+        <span class="brand-name">Tabibi</span>
+      </a>
+      <div class="lang-selector">
+        <button class="lang-btn active" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="ar">عربي</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="legal-tabs">
+      <button class="tab-link active" id="tabAbout" data-i18n="legal.about_title">À Propos</button>
+      <button class="tab-link" id="tabPrivacy" data-i18n="legal.privacy_title">Confidentialité</button>
+      <button class="tab-link" id="tabTerms" data-i18n="legal.terms_title">Conditions</button>
+      <button class="tab-link" id="tabCookies" data-i18n="legal.cookies_title">Cookies</button>
+    </nav>
+
+    <!-- SECTION 1: À PROPOS & SUPPORT -->
+    <section id="secAbout" class="legal-card">
+      <div class="card-icon-badge">🇩🇿</div>
+      <h1 data-i18n="legal.about_title">À Propos de Tabibi</h1>
+      <p class="lead-text" data-i18n="legal.about_desc">Tabibi est un service d'intérêt général 100% gratuit destiné aux praticiens et patients en Algérie.</p>
+      
+      <div class="support-box">
+        <h2 data-i18n="legal.support_title">Support & Assistance Praticiens</h2>
+        <p data-i18n="legal.support_desc">Besoin d'aide pour configurer votre cabinet ? Contactez notre support : support@tabibi.dz.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 2: CONFIDENTIALITÉ & LOI 18-07 -->
+    <section id="secPrivacy" class="legal-card" style="display: none;">
+      <div class="card-icon-badge">🔒</div>
+      <h1 data-i18n="legal.privacy_title">Protection des Données & Confidentialité</h1>
+      <div class="law-badge">
+        <span class="shield-icon">🛡️</span>
+        <span data-i18n="legal.privacy_law">Conformité stricte avec la Loi n° 18-07 du 10 juin 2018 relative à la protection des données à caractère personnel.</span>
+      </div>
+      <p class="lead-text" data-i18n="legal.privacy_no_commercial">
+        Zéro exploitation commerciale : les coordonnées collectées ne sont JAMAIS vendues, louées ou cédées.
+      </p>
+    </section>
+
+    <!-- SECTION 3: CONDITIONS & LOIS SANTÉ 18-11 -->
+    <section id="secTerms" class="legal-card" style="display: none;">
+      <div class="card-icon-badge">⚖️</div>
+      <h1 data-i18n="legal.terms_title">Conditions Générales d'Utilisation</h1>
+      <div class="law-badge">
+        <span class="shield-icon">📜</span>
+        <span data-i18n="legal.terms_medical_law">Régies par la Loi n° 18-11 relative à la santé et le Code de Déontologie Médicale algérien (Décret n° 92-276).</span>
+      </div>
+      <p class="lead-text" data-i18n="legal.terms_responsibilities">
+        Conformité avec la Loi n° 18-05 relative au commerce électronique pour la transparence des informations.
+      </p>
+    </section>
+
+    <!-- SECTION 4: COOKIES TECHNIQUES UNIQUEMENT -->
+    <section id="secCookies" class="legal-card" style="display: none;">
+      <div class="card-icon-badge">🍪</div>
+      <h1 data-i18n="legal.cookies_title">Politique relative aux Cookies</h1>
+      <p class="lead-text" data-i18n="legal.cookies_technical_only">
+        Ce site utilise exclusivement des cookies techniques nécessaires au fonctionnement. Zéro traceur publicitaire.
+      </p>
+    </section>
+
+    <footer class="legal-footer">
+      <a href="/">&larr; Retour à l'accueil Tabibi</a>
+    </footer>
+
+  </div>
+
+  <script type="module" src="/legal/legal.js"></script>
+</body>
+</html>

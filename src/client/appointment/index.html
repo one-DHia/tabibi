@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabibi — Votre Consultation Médicale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/appointment/style.css">
+</head>
+<body>
+  <div class="pass-wrapper">
+    
+    <!-- Top Nav -->
+    <div class="pass-topbar">
+      <a href="/" class="brand-badge">
+        <span class="brand-sparkle">✦</span>
+        <span class="brand-name">Tabibi</span>
+      </a>
+      <div class="lang-selector">
+        <button class="lang-btn active" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="ar">عربي</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </div>
+
+    <!-- Active Digital Pass -->
+    <div id="activeView" class="appointment-card">
+      
+      <div class="card-hero">
+        <div class="verified-pill">
+          <span class="pulse-dot"></span>
+          <span>Consultation Confirmée</span>
+        </div>
+        <div class="doctor-badge">
+          <div class="avatar-box">🏥</div>
+          <div>
+            <h1 id="valCabinet" class="cabinet-title">Cabinet Médical El Chifa</h1>
+            <div class="specialty-sub">✦ Prise de rendez-vous vérifiée</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pass-body">
+        <div class="schedule-highlight">
+          <div class="highlight-item">
+            <span class="highlight-label" data-i18n="booking.date_label">Date</span>
+            <span class="highlight-val" id="valDate">--</span>
+          </div>
+          <div class="divider"></div>
+          <div class="highlight-item">
+            <span class="highlight-label" data-i18n="booking.time_label">Heure</span>
+            <span class="highlight-val time" id="valTime">--</span>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <span class="info-icon">📍</span>
+          <div>
+            <div class="info-title" data-i18n="common.address">Adresse du Cabinet</div>
+            <div class="info-detail" id="valAddress">12 Rue Didouche Mourad, Alger</div>
+          </div>
+        </div>
+
+        <div class="call-banner">
+          <div class="call-text">
+            <span data-i18n="whatsapp.cancellation_notice">Pour annuler ou modifier, contactez directement le secrétariat par téléphone :</span>
+            <div class="phone-number" id="valPhone">0550 12 34 56</div>
+          </div>
+          <a href="tel:0550123456" class="btn-call">📞 Appeler</a>
+        </div>
+      </div>
+
+      <div class="pass-footer">
+        <span>🔒 Ce lien de consultation est unique et sécurisé.</span>
+      </div>
+
+    </div>
+
+    <!-- Expired View -->
+    <div id="expiredView" class="appointment-card expired-card">
+      <div class="expired-icon">⏳</div>
+      <h2 data-i18n="booking.link_expired_title">Lien Expiré</h2>
+      <p data-i18n="booking.link_expired_message">Ce lien de consultation a expiré car le rendez-vous est déjà passé.</p>
+      <a href="/" class="btn-primary" style="margin-top: 20px; display: inline-block;">Retour à l'accueil</a>
+    </div>
+
+  </div>
+
+  <script type="module" src="/appointment/appointment.js"></script>
+</body>
+</html>

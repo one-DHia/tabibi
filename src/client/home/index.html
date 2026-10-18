@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabibi — Solution de Réservation Médicale B2B</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/home/style.css">
+</head>
+<body>
+  <div class="home-container">
+    
+    <!-- Navigation -->
+    <nav class="nav-bar">
+      <div class="brand-title" data-i18n="common.brand">Tabibi</div>
+      <div class="nav-actions">
+        <button class="lang-btn active" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="ar">عربي</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <a href="/login" class="btn-outline" data-i18n="home.cta_login">Espace Praticien</a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-badge">Plateforme Santé Dédiée • Algérie</div>
+      <h1 class="hero-title" data-i18n="home.hero_title">
+        La solution de prise de rendez-vous dédiée à votre cabinet médical.
+      </h1>
+      <p class="hero-subtitle" data-i18n="home.hero_subtitle">
+        Offrez à vos patients une page de réservation exclusive avec confirmation et rappels automatiques par WhatsApp.
+      </p>
+      <div class="hero-cta-group">
+        <a href="/signup" class="btn-primary" data-i18n="home.cta_signup">Inscrire mon cabinet</a>
+      </div>
+    </section>
+
+    <!-- Key Benefits -->
+    <section class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">🔗</div>
+        <h3 data-i18n="home.benefit_link_title">Votre page dédiée et personnalisée</h3>
+        <p data-i18n="home.benefit_link_desc">
+          Un lien unique à intégrer sur votre fiche Google Maps, ordonnances et réseaux sociaux.
+        </p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">💬</div>
+        <h3 data-i18n="home.benefit_reminder_title">Rappels automatiques par WhatsApp</h3>
+        <p data-i18n="home.benefit_reminder_desc">
+          Réduisez drastiquement les rendez-vous manqués grâce aux rappels à 24h et 2h avant le créneau.
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div>&copy; 2026 Tabibi.dz — <span data-i18n="legal.about_desc">Service d'intérêt général</span></div>
+      <div class="footer-links">
+        <a href="/about" data-i18n="legal.about_title">À Propos</a>
+        <a href="/privacy" data-i18n="legal.privacy_title">Confidentialité</a>
+        <a href="/terms" data-i18n="legal.terms_title">Conditions</a>
+        <a href="/cookies" data-i18n="legal.cookies_title">Cookies</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script type="module" src="/home/home.js"></script>
+</body>
+</html>

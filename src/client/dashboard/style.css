@@ -1,0 +1,493 @@
+/* ============================================================
+   TABIBI — LUXURY DASHBOARD UI (SaaS Management)
+   ============================================================ */
+
+:root {
+  --bg-primary: #FAFCFF;
+  --bg-mesh-1: radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.08) 0px, transparent 50%);
+  --bg-mesh-2: radial-gradient(at 100% 100%, rgba(14, 165, 233, 0.08) 0px, transparent 50%);
+  --surface-glass: rgba(255, 255, 255, 0.92);
+  --border-glass: rgba(226, 232, 240, 0.85);
+  --border-focus: #10B981;
+  --border-glow: 0 0 0 3px rgba(16, 185, 129, 0.18);
+  --brand-gradient: linear-gradient(135deg, #059669 0%, #0D9488 50%, #0284C7 100%);
+  --brand-glow: 0 10px 25px -5px rgba(16, 185, 129, 0.35);
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --status-confirmed: #059669;
+  --status-confirmed-bg: rgba(16, 185, 129, 0.1);
+  --status-cancelled: #DC2626;
+  --status-cancelled-bg: rgba(239, 68, 68, 0.1);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 9999px;
+  --shadow-card: 0 20px 40px -15px rgba(15, 23, 42, 0.06), 0 0 1px 1px rgba(226, 232, 240, 0.6);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--bg-primary);
+  background-image: var(--bg-mesh-1), var(--bg-mesh-2);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  line-height: 1.5;
+  padding: 32px 20px 60px;
+}
+
+.dashboard-container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 32px;
+}
+
+.header-left, .header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 800;
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-sparkle {
+  color: #10B981;
+  -webkit-text-fill-color: #10B981;
+}
+
+.cabinet-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  background: rgba(241, 245, 249, 0.7);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: #10B981;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #10B981;
+}
+
+.logout-link {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.logout-link:hover {
+  color: #DC2626;
+}
+
+/* Page Intro & Metrics */
+.page-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.dashboard-title {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+}
+
+.dashboard-sub {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.quick-stats {
+  display: flex;
+  gap: 10px;
+}
+
+.stat-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-glass);
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+
+.stat-pill.online .stat-val {
+  color: #059669;
+  font-weight: 700;
+}
+
+.stat-label {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.stat-val {
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+/* Tabs */
+.nav-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  background: rgba(241, 245, 249, 0.7);
+  padding: 4px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-glass);
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: var(--radius-pill);
+  transition: all 0.2s ease;
+}
+
+.tab-btn.active {
+  background: #FFFFFF;
+  color: var(--text-primary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+/* Main Card */
+.card {
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-card);
+  margin-bottom: 24px;
+}
+
+.agenda-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.toolbar-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.toolbar-title-group h2 {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.badge-count {
+  background: rgba(16, 185, 129, 0.1);
+  color: #047857;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.date-picker-input {
+  padding: 8px 14px;
+  border: 1px solid #CBD5E1;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  background: #FFFFFF;
+  outline: none;
+  font-weight: 600;
+}
+
+/* Modern SaaS Table */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.appointment-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.appointment-table th {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.appointment-table td {
+  padding: 16px;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  font-size: 14px;
+  background: #FFFFFF;
+}
+
+.appointment-table tr:hover td {
+  background: rgba(248, 250, 252, 0.9);
+}
+
+.time-badge {
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: #0D9488;
+  background: rgba(13, 148, 136, 0.08);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+}
+
+.status-badge {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.status-confirmed {
+  background: var(--status-confirmed-bg);
+  color: var(--status-confirmed);
+}
+
+.status-cancelled {
+  background: var(--status-cancelled-bg);
+  color: var(--status-cancelled);
+}
+
+.btn-cancel {
+  background: transparent;
+  border: 1px solid #FECACA;
+  color: #DC2626;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-cancel:hover {
+  background: #FEE2E2;
+}
+
+/* Schedules Tab */
+.card-section-title {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.section-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.schedules-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.input-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-glass);
+  padding: 16px;
+  border-radius: var(--radius-md);
+}
+
+.form-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #CBD5E1;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  outline: none;
+}
+
+/* Settings Tab & Share */
+.share-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.share-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #CBD5E1;
+  border-radius: var(--radius-pill);
+  font-family: monospace;
+  font-size: 14px;
+  background: #FFFFFF;
+  outline: none;
+}
+
+.qr-preview-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-glass);
+  padding: 24px;
+  border-radius: var(--radius-md);
+}
+
+.qr-box {
+  width: 120px;
+  height: 120px;
+  background: #F8FAFC;
+  border: 2px dashed #CBD5E1;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+}
+
+.qr-info h3 {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.qr-info p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--brand-gradient);
+  color: #FFFFFF;
+  border: none;
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: var(--brand-glow);
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px -4px rgba(16, 185, 129, 0.4);
+}
+
+.btn-outline {
+  background: #FFFFFF;
+  border: 1px solid var(--border-glass);
+  color: var(--text-primary);
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.lang-selector {
+  display: flex;
+  gap: 4px;
+  background: rgba(241, 245, 249, 0.7);
+  padding: 3px;
+  border-radius: var(--radius-pill);
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.lang-btn.active {
+  background: #FFFFFF;
+  color: var(--text-primary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 40px;
+  display: none;
+  font-size: 14px;
+}
+
+[dir="rtl"] {
+  text-align: right;
+}
+[dir="rtl"] .appointment-table th {
+  text-align: right;
+}
